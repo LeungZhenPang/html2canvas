@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+</head>
+<body>
+    <div id="content" style="width:150px;height:80px;border:1px solid blue;background: #34b;text-align: center;line-height: 80px;color:#fff">
+        测试元素
+    </div>
+    <button onclick="create()">生成</button><br>
+<script>
+    function create () {
+        html2canvas(document.getElementById('content'))		//把元素转成canvas
+        .then(function(canvas) {
+        	document.body.appendChild(canvas)		//插入canvas图形
+
+        	let image = new Image()					//利用canvas对象方法:toDataURL()把canvas转换成图片
+        	image.src = canvas.toDataURL()
+        	document.body.appendChild(image)
+        })
+    };
+</script>
+</body>
+</html>
